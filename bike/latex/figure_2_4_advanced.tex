@@ -1,0 +1,160 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usetikzlibrary{shadows,shapes.geometric,arrows.meta,positioning}
+
+% Define dopamine color scheme
+\definecolor{dopamine_primary}{RGB}{255, 87, 34}    % Orange
+\definecolor{dopamine_secondary}{RGB}{33, 150, 243} % Blue
+\definecolor{dopamine_accent}{RGB}{76, 175, 80}     % Green
+\definecolor{dopamine_light}{RGB}{129, 212, 250}    % Light Blue
+\definecolor{dopamine_dark}{RGB}{25, 25, 25}        % Dark Gray
+
+\begin{document}
+\begin{tikzpicture}[
+    % Layer styles
+    layer/.style={
+        rectangle,
+        minimum width=16cm,
+        minimum height=3cm,
+        draw=black,
+        line width=2.5pt,
+        rounded corners=12pt,
+        text centered,
+        font=\Large\bfseries,
+        drop shadow={shadow xshift=2pt, shadow yshift=-2pt, fill=black!20}
+    },
+    % Feature box styles
+    feature/.style={
+        rectangle,
+        minimum width=2.8cm,
+        minimum height=1.2cm,
+        draw=black,
+        line width=1.5pt,
+        rounded corners=6pt,
+        text centered,
+        font=\small\bfseries,
+        fill=white,
+        drop shadow={shadow xshift=1pt, shadow yshift=-1pt, fill=black!10}
+    },
+    % Arrow styles
+    arrow/.style={
+        ->,
+        line width=4pt,
+        color=gray!70,
+        arrows={-Stealth[length=6pt,width=6pt]}
+    },
+    % Title styles
+    title/.style={
+        font=\Huge\bfseries,
+        text centered,
+        color=dopamine_dark
+    },
+    subtitle/.style={
+        font=\large,
+        text centered,
+        color=gray!60
+    },
+    % Statistics styles
+    stats/.style={
+        font=\small,
+        color=gray!50,
+        text centered
+    }
+]
+
+% Title
+\node[title] at (0, 13) {Dataset Architecture};
+
+% Subtitle
+\node[subtitle] at (0, 12.2) {Three-Layer Data Integration Framework for Urban Mobility Analysis};
+
+% Core Layer (Digital Footprints)
+\node[layer, fill=dopamine_primary!15, text=dopamine_primary] 
+    (core_layer) at (0, 10) {Core Layer: Digital Footprints};
+
+% Core Layer Features
+\node[feature] at (-6, 9) {Start\\Location};
+\node[feature] at (-3.5, 9) {End\\Location};
+\node[feature] at (-1, 9) {Ride\\Duration};
+\node[feature] at (1.5, 9) {Ride\\Distance};
+\node[feature] at (4, 9) {Track\\Data};
+\node[feature] at (6.5, 9) {Speed\\Profile};
+
+% Core Layer Statistics
+\node[stats] at (0, 8.3) {2,000 bike ride records • 11 basic features • 99.2\% completeness};
+
+% Arrow 1
+\draw[arrow] (0, 7.8) -- (0, 6.8);
+
+% Enrichment Layer (Socio-economic Attributes)
+\node[layer, fill=dopamine_secondary!15, text=dopamine_secondary] 
+    (enrichment_layer) at (0, 6) {Enrichment Layer: Socio-economic Attributes};
+
+% Enrichment Layer Features
+\node[feature] at (-4.5, 5) {House Price\\Data};
+\node[feature] at (-1.5, 5) {Economic\\Level};
+\node[feature] at (1.5, 5) {Income\\Distribution};
+\node[feature] at (4.5, 5) {Consumption\\Capacity};
+
+% Enrichment Layer Statistics
+\node[stats] at (0, 4.3) {Economic characterization • Price range: 45,000-98,000 CNY/m² • Mean: 71,500 CNY/m²};
+
+% Arrow 2
+\draw[arrow] (0, 3.8) -- (0, 2.8);
+
+% Environment Layer (Built Environment)
+\node[layer, fill=dopamine_accent!15, text=dopamine_accent] 
+    (environment_layer) at (0, 2) {Environment Layer: Built Environment};
+
+% Environment Layer Features
+\node[feature] at (-6, 1) {Metro Station\\Density};
+\node[feature] at (-3.5, 1) {Commercial\\POI};
+\node[feature] at (-1, 1) {School\\Distribution};
+\node[feature] at (1.5, 1) {Hospital\\Distribution};
+\node[feature] at (4, 1) {Traffic\\Patterns};
+\node[feature] at (6.5, 1) {Land Use\\Mix};
+
+% Environment Layer Statistics
+\node[stats] at (0, 0.3) {Spatial context • 156 active grid cells • 0.01° resolution (≈1km)};
+
+% Arrow 3
+\draw[arrow] (0, -0.2) -- (0, -1.2);
+
+% Final Integration Box
+\node[rectangle, 
+      minimum width=18cm, 
+      minimum height=2cm,
+      draw=dopamine_primary,
+      line width=3pt,
+      rounded corners=8pt,
+      fill=dopamine_light!25,
+      text centered,
+      font=\Large\bfseries,
+      color=dopamine_primary,
+      drop shadow={shadow xshift=3pt, shadow yshift=-3pt, fill=black!25}] 
+    (final_dataset) at (0, -2) {Final Integrated Dataset};
+
+% Final Dataset Statistics
+\node[font=\large\bfseries, color=dopamine_dark] at (0, -2.8) {38 Engineered Features};
+\node[stats] at (0, -3.4) {Multi-dimensional urban mobility analysis • Socio-economic pattern recognition • Machine learning ready};
+
+% Data Flow Arrows (lateral with labels)
+\draw[arrow, color=dopamine_primary!70] (-8.5, 10) -- (-8.5, 6);
+\draw[arrow, color=dopamine_secondary!70] (8.5, 6) -- (8.5, 2);
+\draw[arrow, color=dopamine_accent!70] (-8.5, 2) -- (-8.5, -2);
+
+% Integration Process Labels
+\node[font=\small\bfseries, rotate=90, color=dopamine_primary!90] at (-9.2, 8) {Data\\Fusion};
+\node[font=\small\bfseries, rotate=90, color=dopamine_secondary!90] at (9.2, 4) {Attribute\\Mapping};
+\node[font=\small\bfseries, rotate=90, color=dopamine_accent!90] at (-9.2, 0) {Context\\Integration};
+
+% Add decorative elements
+\foreach \x in {-8, -4, 0, 4, 8} {
+    \draw[color=gray!20, line width=1pt] (\x, -4) -- (\x, 14);
+}
+
+\end{tikzpicture}
+\end{document}

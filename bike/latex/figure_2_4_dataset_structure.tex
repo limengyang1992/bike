@@ -1,0 +1,140 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Set fonts
+\setmainfont{Arial}
+\setsansfont{Arial}
+
+% Define dopamine color scheme
+\definecolor{dopamine_primary}{RGB}{255, 87, 34}    % Orange
+\definecolor{dopamine_secondary}{RGB}{33, 150, 243} % Blue
+\definecolor{dopamine_accent}{RGB}{76, 175, 80}     % Green
+\definecolor{dopamine_light}{RGB}{129, 212, 250}    % Light Blue
+
+\begin{document}
+\begin{tikzpicture}[
+    layer/.style={
+        rectangle,
+        minimum width=14cm,
+        minimum height=2.5cm,
+        draw=black,
+        line width=2pt,
+        rounded corners=8pt,
+        text centered,
+        font=\Large\bfseries
+    },
+    feature/.style={
+        rectangle,
+        minimum width=2.5cm,
+        minimum height=1cm,
+        draw=black,
+        line width=1pt,
+        rounded corners=4pt,
+        text centered,
+        font=\small,
+        fill=white
+    },
+    arrow/.style={
+        ->,
+        line width=3pt,
+        color=gray!60
+    },
+    title/.style={
+        font=\Huge\bfseries,
+        text centered,
+        color=black
+    },
+    subtitle/.style={
+        font=\large,
+        text centered,
+        color=gray!70
+    }
+]
+
+% Title
+\node[title] at (0, 10) {Dataset Architecture};
+
+% Subtitle
+\node[subtitle] at (0, 9.3) {Three-Layer Data Integration Framework};
+
+% Core Layer (Digital Footprints)
+\node[layer, fill=dopamine_primary!20, text=dopamine_primary] 
+    (core_layer) at (0, 7.5) {Core Layer: Digital Footprints};
+
+% Core Layer Features
+\node[feature] at (-5.5, 6.5) {Start Location};
+\node[feature] at (-3.5, 6.5) {End Location};
+\node[feature] at (-1.5, 6.5) {Ride Duration};
+\node[feature] at (0.5, 6.5) {Ride Distance};
+\node[feature] at (2.5, 6.5) {Track Data};
+\node[feature] at (4.5, 6.5) {Speed Profile};
+
+% Core Layer Statistics
+\node[font=\small, color=gray!60] at (0, 5.8) {2,000 bike ride records • 11 basic features • 99.2\% completeness};
+
+% Arrow 1
+\draw[arrow] (0, 5.5) -- (0, 4.8);
+
+% Enrichment Layer (Socio-economic Attributes)
+\node[layer, fill=dopamine_secondary!20, text=dopamine_secondary] 
+    (enrichment_layer) at (0, 4) {Enrichment Layer: Socio-economic Attributes};
+
+% Enrichment Layer Features
+\node[feature] at (-4, 3) {House Price Data};
+\node[feature] at (-1.5, 3) {Economic Level};
+\node[feature] at (1, 3) {Income Distribution};
+\node[feature] at (3.5, 3) {Consumption Capacity};
+
+% Enrichment Layer Statistics
+\node[font=\small, color=gray!60] at (0, 2.3) {Economic characterization • Price range: 45,000-98,000 CNY/m² • Mean: 71,500 CNY/m²};
+
+% Arrow 2
+\draw[arrow] (0, 2) -- (0, 1.3);
+
+% Environment Layer (Built Environment)
+\node[layer, fill=dopamine_accent!20, text=dopamine_accent] 
+    (environment_layer) at (0, 0.5) {Environment Layer: Built Environment};
+
+% Environment Layer Features
+\node[feature] at (-5, -0.5) {Metro Station Density};
+\node[feature] at (-2.5, -0.5) {Commercial POI};
+\node[feature] at (0, -0.5) {School Distribution};
+\node[feature] at (2.5, -0.5) {Hospital Distribution};
+\node[feature] at (5, -0.5) {Traffic Patterns};
+
+% Environment Layer Statistics
+\node[font=\small, color=gray!60] at (0, -1.2) {Spatial context • 156 active grid cells • 0.01° resolution (≈1km)};
+
+% Final Integration Box
+\node[rectangle, 
+      minimum width=16cm, 
+      minimum height=1.5cm,
+      draw=dopamine_primary,
+      line width=3pt,
+      rounded corners=6pt,
+      fill=dopamine_light!30,
+      text centered,
+      font=\Large\bfseries,
+      color=dopamine_primary] 
+    (final_dataset) at (0, -2.5) {Final Integrated Dataset};
+
+% Final Dataset Statistics
+\node[font=\large, color=black] at (0, -3.2) {38 Engineered Features};
+\node[font=\small, color=gray!60] at (0, -3.6) {Multi-dimensional urban mobility analysis • Socio-economic pattern recognition};
+
+% Data Flow Arrows (lateral)
+\draw[arrow, color=dopamine_primary!60] (-7, 7.5) -- (-7, 4);
+\draw[arrow, color=dopamine_secondary!60] (7, 4) -- (7, 0.5);
+\draw[arrow, color=dopamine_accent!60] (-7, 0.5) -- (-7, -2.5);
+
+% Integration Process Labels
+\node[font=\small, rotate=90, color=dopamine_primary!80] at (-7.5, 5.75) {Data Fusion};
+\node[font=\small, rotate=90, color=dopamine_secondary!80] at (7.5, 2.25) {Attribute Mapping};
+\node[font=\small, rotate=90, color=dopamine_accent!80] at (-7.5, -1) {Context Integration};
+
+\end{tikzpicture}
+\end{document}
